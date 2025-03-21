@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifsp.teste.models.User;
 import com.ifsp.teste.repositories.UserRepository;
+import com.ifsp.teste.utils.BodyParser;
 
 
 
@@ -26,21 +26,9 @@ public class UserController {
         return "signup";
     }    
 
-    public Map<String, String> bodyToMap(String bodyStr) {
-        Map<String, String> body = new HashMap<>();
-        String[] values = bodyStr.split("&");
-        for (String value : values) {
-            String[] pair = value.split("=");
-            if (pair.length == 2) {
-            body.put(pair[0], pair[1]);
-            }
-        }
-        return body;
-    }
-
     @PostMapping("/signup")
     public String signup(@RequestBody String body) {
-        Map<String, String> bodyParsed = bodyToMap(body);
+        Map<String, String> bodyParsed = BodyParser.parse(body);
 
         User u = new User();
         u.setUsername(bodyParsed.get("username"));
