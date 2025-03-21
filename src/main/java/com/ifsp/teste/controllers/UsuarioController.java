@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.ifsp.services.UsuarioService;
 import com.ifsp.teste.models.Usuario;
+import com.ifsp.teste.services.UsuarioService;
 import com.ifsp.teste.utils.BodyParser;
 
 
@@ -20,7 +20,6 @@ import com.ifsp.teste.utils.BodyParser;
 public class UsuarioController {   
 
     @Autowired
-    @Qualifier("UsuarioServiceImpl")
     public UsuarioService usuarioService;
 
     @GetMapping("/signup")
