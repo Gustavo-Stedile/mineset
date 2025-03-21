@@ -6,15 +6,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ifsp.teste.TesteApplication;
 import com.ifsp.teste.models.Usuario;
 import com.ifsp.teste.services.UsuarioService;
 import com.ifsp.teste.utils.BodyParser;
-
-
 
 @Controller
 public class UsuarioController {   
@@ -22,32 +24,34 @@ public class UsuarioController {
     @Autowired
     public UsuarioService usuarioService;
 
-    @GetMapping("/signup")
-    public String viewSignup() {
-        return "signup";
-    }    
-
     @PostMapping("/cadastro")
-    public String signup(@RequestBody String body) {
-        Map<String, String> bodyParsed = BodyParser.parse(body);
-
+    public String signup(
+        @RequestParam String nome, 
+        @RequestParam String email,
+        @RequestParam String senha
+        
+    ) {
         Usuario u = new Usuario();
-        u.setNome(bodyParsed.get("nome"));
-        u.setSenha(bodyParsed.get("senha"));
-        u.setEmail(bodyParsed.get("email"));
+        u.setNome(nome);
+        u.setSenha(senha);
+        u.setEmail(email);
 
         usuarioService.criar(u);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 
     @PostMapping("/login")
-    public String login(@RequestBody String body) {
-        Map<String, String> bodyParsed = BodyParser.parse(body);
-        Usuario u = usuarioService.autenticar(bodyParsed.get("email"), bodyParsed.get("senha"));
+    public String login(
+        Model model,
+        @RequestParam String email,
+        @RequestParam String senha
+    ) {
+        Usuario u = usuarioService.autenticar(email, senha);
+        
         if (u == null) {
-            //TODO: tratar erro
-            return "redirect:/index";
+            model.addAttribute("mensagem", "email ou senha incorretos");
+            return "/login";
         } 
 
         //TODO: criar a home!

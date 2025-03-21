@@ -22,4 +22,9 @@ public class RoutingController {
         return "cadastro";
     }
 
+    @GetMapping("/home") 
+    public String home() {
+        return "home";
+    }
+
 }
