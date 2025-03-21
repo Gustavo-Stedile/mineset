@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifsp.teste.models.User;
-import com.ifsp.teste.repository.UserRepository;
+import com.ifsp.teste.repositories.UserRepository;
 
 
 
