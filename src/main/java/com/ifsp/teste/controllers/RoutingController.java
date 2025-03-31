@@ -26,5 +26,4 @@ public class RoutingController {
     public String home() {
         return "home";
     }
-
 }

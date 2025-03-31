@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ifsp.teste.exceptions.UnauthorizedAccessException;
 import com.ifsp.teste.models.Usuario;
 import com.ifsp.teste.services.UsuarioService;
 
@@ -34,7 +35,6 @@ public class UsuarioController {
         return "redirect:/";
     }
 
-
     @PostMapping("/login")
     public String login(
         Model model,
@@ -45,7 +45,7 @@ public class UsuarioController {
         Usuario u = usuarioService.autenticar(email, senha);
         
         if (u == null) {
-            model.addAttribute("mensagem", "Email ou senha incorretos");
+            model.addAttribute("mensagem", "email ou senha incorretos");
             return "/login";
         }
         // sessão p/ usuario acessar outras paginas
@@ -58,10 +58,8 @@ public class UsuarioController {
         Usuario u = (Usuario) session.getAttribute("usuarioAutenticado");
 
         if (u == null) {
-            model.addAttribute("mensagem", "é necessário estar cadastrado!");
-            return "redirect:/login";
+            throw new UnauthorizedAccessException("você precisa estar logado para acessar essa página!");
         }
-
         return "documentacao";
     }
 }
