@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Relatórios</title>
+    <link rel="stylesheet" th:href="@{styles.css}">
 </head>
 <body>
     <div class="navbar">
@@ -15,9 +15,6 @@
         <a href="documentacao">Documentação</a>
     </div>
     
-    <div class="container">
-        <h2>Bem-vindo ao MineSet!</h2>
-        <p>Escolha uma opção no menu acima.</p>
-    </div>
+    <h2>Relatórios</h2>
 </body>
 </html>

@@ -5,7 +5,7 @@ public class UnauthorizedAccessException extends RuntimeException {
         super("você precisa estar logado para acessar essa página!");
     }
 
-    public UnauthorizedAccessException(String mensagem) {
-        super(mensagem);
+    public UnauthorizedAccessException(String ex) {
+        super(ex);
     }
 }

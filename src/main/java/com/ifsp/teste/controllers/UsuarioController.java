@@ -58,8 +58,37 @@ public class UsuarioController {
         Usuario u = (Usuario) session.getAttribute("usuarioAutenticado");
 
         if (u == null) {
-            throw new UnauthorizedAccessException("você precisa estar logado para acessar essa página!");
+            throw new UnauthorizedAccessException();
         }
         return "documentacao";
+    }
+
+    @GetMapping("/configuracoes")
+    public String configuracoes(HttpSession session, Model model) {
+        Usuario u = (Usuario) session.getAttribute("usuarioAutenticado");
+
+        if (u == null) {
+            throw new UnauthorizedAccessException();        }
+        return "configuracoes";
+    }
+
+    @GetMapping("/relatorios")
+    public String relatorios(HttpSession session, Model model) {
+        Usuario u = (Usuario) session.getAttribute("usuarioAutenticado");
+
+        if (u == null) {
+            throw new UnauthorizedAccessException();
+        }
+        return "relatorios";
+    }
+
+    @GetMapping("/upload")
+    public String upload(HttpSession session, Model model) {
+        Usuario u = (Usuario) session.getAttribute("usuarioAutenticado");
+
+        if (u == null) {
+            throw new UnauthorizedAccessException();
+        }
+        return "upload";
     }
 }
