@@ -1,5 +1,9 @@
 package com.ifsp.teste.controllers;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +29,10 @@ public class UsuarioController {
         @RequestParam String email,
         @RequestParam String senha
         
-    ) {
+    ) throws IOException {
         Usuario u = new Usuario();
         u.setNome(nome);
         u.setSenha(senha);
-        u.setEmail(email);
 
         usuarioService.criar(u);
         return "redirect:/";
@@ -38,16 +41,17 @@ public class UsuarioController {
     @PostMapping("/login")
     public String login(
         Model model,
-        @RequestParam String email,
+        @RequestParam String nome,
         @RequestParam String senha,
         HttpSession session
-    ) {
-        Usuario u = usuarioService.autenticar(email, senha);
+    ) throws Exception {
+        Usuario u = usuarioService.autenticar(nome, senha);
         
         if (u == null) {
             model.addAttribute("mensagem", "email ou senha incorretos");
             return "/login";
         }
+
         // sessão p/ usuario acessar outras paginas
         session.setAttribute("usuarioAutenticado", u); 
         return "redirect:/home";
