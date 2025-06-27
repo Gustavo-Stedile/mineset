@@ -1,0 +1,57 @@
+Objetivos:
+Atear fogo em Local
+Explodir Local
+Capturar Animais
+Capturar Villagers
+Matar Animais
+Matar Villagers
+Matar Guerreiros
+Escoltar Comboio
+
+Mapa:
+Abetos
+- Encruzilhada
+- Acampamento A
+- Acampamento B
+- Posto A
+- Posto B
+
+Properties Piglin:
+- Tamanho/Escala (+Força/-Destreza)
+- Armadura
+- Arma Primaria
+- Arma Secundaria / Escudo
+- Habilidade Especial
+- Habilidade Secundaria
+- Bonus Próprio
+- Bonus Aliado
+
+Das armas:
+Na mão principal
+Na mão secundaria
+Arma com as duas mão
+Arma e Escudo
+
+Código Host:
+- add_player
+- remove_player 
+- start game
+- reload_game
+- stop_game
+
+Código StrategyBase:
+- goto()
+- fallow()
+- patrol()
+- atack()
+- interact()
+- useAbility()
+- getEnemies()
+- getAllies()
+- getObjectives()
+- getHealth()
+- getGold()
+- buyUp()
+- useItem()
+- say()
+- sayTo()

@@ -1,0 +1,69 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("../img/backgroundWiki.png");
+    background-size: cover;         /* cobre toda a tela */
+    background-repeat: no-repeat;   /* evita repetição */
+    background-position: center;    /* centraliza a imagem */
+  }
+
+  .content-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: 40%; /* espaço para a navbar fixa */
+  }
+
+  .sidebar {
+    width: 20%;
+    background-color: #e1e1e1;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .sidebar h2 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sidebar li {
+    margin: 10px 0;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    width: 60%;
+  }
+
+  .stats {
+    width: 20%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .stat-block {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .stat-block h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+  

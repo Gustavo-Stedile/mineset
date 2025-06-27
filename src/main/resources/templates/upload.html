@@ -4,7 +4,8 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload</title>
-    <link rel="stylesheet" th:href="@{styles.css}">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="upload.css">
 </head>
 <body>
     <div class="navbar">
@@ -12,8 +13,29 @@
         <a href="upload">Upload</a>
         <a href="configuracoes">Configurações</a>
         <a href="relatorios">Relatórios</a>
-        <a href="documentacao">Documentação</a>
+        <a href="documentacoes/index.html">Documentação</a>
     </div>
-    <h2>Upload</h2>
+
+    <div class="content-wrapper">
+        <!-- Conteúdo principal -->
+        <div class="main-content">
+          <h1>Menu de versão</h1>
+          <div><p>Versão 6.2</p></div>
+        </div>
+    
+       <!-- Sidebar esquerda -->
+       <div class="sidebar">
+        <h1>Upload</h1>
+        
+        <form method="POST" enctype="multipart/form-data">
+            <label for="classe">Nome da Classe</label>
+            <input type="text" name="classe" id="classe" /> 
+
+            <input type="file" name="file" id="file" value="selecione um arquivo" />
+            <button type="submit">Selecionar Arquivo</button>
+            <input type="submit">        
+        </form>
+       </div>
+      </div>
 </body>
 </html>

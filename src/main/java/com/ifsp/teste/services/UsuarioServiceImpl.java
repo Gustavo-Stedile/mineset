@@ -29,7 +29,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         props.load(in = new FileInputStream(file));
         
         if (!props.getProperty("senha").equals(senha)) return null;
-        Usuario u = new Usuario(props.getProperty("nome"), props.getProperty("senha"));
+        Usuario u = new Usuario(props.getProperty("usuario"), props.getProperty("senha"));
+        System.err.println(props.getProperty("usuario"));
         
         in.close();
         file.delete();
